@@ -1,14 +1,29 @@
-document.addEventListener("DOMContentLoaded",() =>{
+document.addEventListener("DOMContentLoaded", async() =>{
      async function fetchproducts(){
         const response=await axios.get("https://fakestoreapi.com/products");
         console.log(response.data);
         return response.data;
     
     }
+    async function fetchproductsbycategory(category){
+        const response=await axios.get(`https://fakestoreapi.com/products/category/${category}`);
+        console.log(response.data);
+        return response.data;
+    }
+
+    const downloadedproducts= await fetchproducts();
+
     async function populateproducts(flag ,customproducts){
         let products =customproducts;
+       const queryparams=new URLSearchParams(window.location.search);
+       const queryparamsobject=Object.fromEntries(queryparams.entries());
         if(flag==false){
-            products=await fetchproducts();
+           if(queryparamsobject['category']){
+            products= await fetchproductsbycategory(queryparamsobject['category']);
+           }else{
+
+               products=await fetchproducts();
+           }
         }
         // const products =await fetchproducts();
         const productlist=document.getElementById("productlist");
@@ -27,7 +42,7 @@ document.addEventListener("DOMContentLoaded",() =>{
             productprice.classList.add("product-price","text-center");
 
             productname.textContent=product.title.substring(0,12)+"...";
-            productprice.textContent=`&#8377; ${product.price}`;
+            productprice.textContent=`$${product.price}`;
             
             const imageinsideproductimage=document.createElement("img");
             imageinsideproductimage.src=product.image;
@@ -50,7 +65,7 @@ document.addEventListener("DOMContentLoaded",() =>{
         const productlist=document.getElementById("productlist");
         const minprice =Number(document.getElementById("minprice").value);
         const maxprice =Number(document.getElementById("maxprice").value);
-        const products= await fetchproducts();
+        const products= downloadedproducts;
         filteredproducts=products.filter(product=> product.price >= minprice && product.price <=maxprice)
         productlist.innerHTML= "";
         populateproducts(true,filteredproducts);
