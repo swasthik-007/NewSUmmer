@@ -77,8 +77,16 @@ document.addEventListener("DOMContentLoaded", async() =>{
     
     });
     }
-    populateproducts(false);
-    populatecategories();
+    async function downloadandpopulate(){
+       Promise.all([populateproducts(false),populatecategories()])
+        .then(()=> {
+            const loaderbackdrop=document.getElementById("loaderbackdrop");
+            loaderbackdrop.style.display = 'none';
+
+        });
+        
+    }
+    downloadandpopulate();
 
 
     const filtersearch=document.getElementById("search");
