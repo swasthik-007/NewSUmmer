@@ -1,0 +1,49 @@
+html{
+/* box-sizing: border-box; */
+/* padding: 25px; */
+padding-top: 0px;
+padding-bottom: 0px;
+padding-left: 25px;
+padding-right: 25px;
+}
+#heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+#pingpongtable{
+    border: 2px solid black;
+    width:auto;
+    height:600px;
+    position: relative;
+    background-color: antiquewhite;
+    /* padding: 50px; */
+    /* text-decoration-color: brown; */
+}
+#paddle{
+    background-color:rgb(6, 79, 88);
+    width: 20px;
+    height: 75px;
+    margin-left: 2px;
+    position: absolute;
+}
+
+#ball{
+    background-color: rgba(178, 19, 19, 0.984);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+}
+html{
+    background-color:rgb(62, 80, 82)
+    
+}
+#score{
+    display: flex;
+/* justify-content: end; */
+/* align-items: center; */
+}

@@ -10,6 +10,12 @@ document.addEventListener("DOMContentLoaded", async() =>{
         console.log(response.data);
         return response.data;
     }
+    async function fetchcategories(){
+        //this function is marked async so this will also return a promise
+    const response= await fetch("https://fakestoreapi.com/products/categories");
+    const data= await response.json();
+    return data;
+    }
 
     const downloadedproducts= await fetchproducts();
 
@@ -58,7 +64,22 @@ document.addEventListener("DOMContentLoaded", async() =>{
         });
 
     }
+    async function populatecategories(){
+        const categories=await fetchcategories();
+        const categorylist=document.getElementById("categorylist");
+        categories.forEach(category=>{
+        const categorylink=document.createElement("a");
+        categorylink.classList.add("d-flex", "text-decoration-none");
+        categorylink.textContent=category;
+        categorylink.href=`productlist.html?category=${category}`;
+        
+        categorylist.appendChild(categorylink);
+    
+    });
+    }
     populateproducts(false);
+    populatecategories();
+
 
     const filtersearch=document.getElementById("search");
     filtersearch.addEventListener("click",async ()=>{
