@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", async() =>{
 
     async function populateproducts(flag ,customproducts){
         let products =customproducts;
-       const queryparams=new URLSearchParams(window.location.search);
-       const queryparamsobject=Object.fromEntries(queryparams.entries());
+      
+       const queryparamsobject=getqueryparams();
         if(flag==false){
            if(queryparamsobject['category']){
             products= await fetchproductsbycategory(queryparamsobject['category']);
@@ -80,8 +80,7 @@ document.addEventListener("DOMContentLoaded", async() =>{
     async function downloadandpopulate(){
        Promise.all([populateproducts(false),populatecategories()])
         .then(()=> {
-            const loaderbackdrop=document.getElementById("loaderbackdrop");
-            loaderbackdrop.style.display = 'none';
+            removeloader();
 
         });
         

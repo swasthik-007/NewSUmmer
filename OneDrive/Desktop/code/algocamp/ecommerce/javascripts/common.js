@@ -13,3 +13,7 @@ function getqueryparams(){
         const loaderbackdrop=document.getElementById("loaderbackdrop");
         loaderbackdrop.style.display = 'none';
     }
+    async function fetchcardsbyid(id){
+        const cart = await axios.get(`https://fakestoreapi.com/carts/${id}`);
+        return cart.data;
+    }
