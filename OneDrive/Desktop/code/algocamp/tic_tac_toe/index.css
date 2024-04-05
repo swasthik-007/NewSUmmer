@@ -1,0 +1,89 @@
+/* 
+#outer{
+    width: 600px;
+    height: 600px;
+    padding: 5px;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  
+    justify-content: space-between;
+}
+
+.inner{
+    border: 1px solid red;
+    flex-basis: 33%;
+    width: 180px;
+    height: 180px;
+    font-size:80px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body{
+    background-color: rgb(23, 185, 226);
+} */
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 50px;
+    margin-top: 20px; /* Add margin to top of h1 */
+}
+
+body {
+    background-color: #0c0c28; /* Dark blue background */
+    background-image: radial-gradient(white 1%, transparent 0); /* Stars */
+    background-size: 3px 3px; /* Star size */
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center horizontally */
+}
+
+.container {
+    margin-top: 20px; /* Add margin to top of container */
+}
+
+#outer {
+    width: 600px;
+    height: 600px;
+    padding: 5px;
+    border: 1px solid white; /* White border */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner {
+    border: 1px solid #fff; /* White border */
+    flex-basis: 33%;
+    width: 180px;
+    height: 180px;
+    font-size: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+    color: #fff; /* White text color */
+}
+
+.inner:hover {
+    background-color: rgba(255, 255, 255, 0.4); /* Lighter semi-transparent white background on hover */
+}
+
+#result {
+    margin-top:20px ;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px; /* Add margin to bottom of result */
+}
